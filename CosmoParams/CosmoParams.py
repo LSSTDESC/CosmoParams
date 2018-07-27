@@ -94,7 +94,7 @@ class CosmoParamsBase(object):
                              'Omega_n_rel', 'h', 'w0', 'wa'],
             'powspec':      ['A_s', 'N_nu_mass', 'Omega_b', 'Omega_c', 
                              'Omega_k', 'Omega_l', 'Omega_n_mass', 'h', 'mnu', 
-                             'n_s', 'sigma_8', 'w0', 'wa']
+                             'n_s', 'sigma_8', 'w0', 'wa'],
             'lensing':      [],
             'cmb':          [],
             'cmblens':      [],
@@ -111,7 +111,7 @@ class CosmoParamsBase(object):
         """
         Perform basic checks and then set parameter value.
         """
-        assert(item in self.base.keys(), "Parameter '%s' not recognized." % item)
+        assert item in self.base.keys(), "Parameter '%s' not recognized." % item
         self.base[item] = val    
     
     def set_defaults(self):
@@ -168,10 +168,10 @@ class CosmoParamsBase(object):
             be used. Default: None.
         """
         # Check that parameters exist
-        assert(param in self.base.keys(), "Parameter '%s' not recognized." % param)
+        assert param in self.base.keys(), "Parameter '%s' not recognized." % param
         if modify is not None:
-            assert(modify in self.base.keys(), 
-                   "Parameter '%s' not recognized." % modify)
+            assert modify in self.base.keys(), \
+                   "Parameter '%s' not recognized." % modify
         
         # List of parameters related by constraints:
         # (1) MUST satisfy: Omega_m = Omega_c + Omega_b + Omega_n_mass
@@ -188,9 +188,9 @@ class CosmoParamsBase(object):
         if param in constr_1:
             # Check for invalid modify parameter
             if modify is not None:
-                assert(modify in constr_1, 
-                       "Parameter '%s' can't be used to satisfy a consistency "
-                       "relation that affects parameter '%s'." % (modify, param))
+                assert modify in constr_1, \
+                       "Parameter '%s' can't be used to satisfy a consistency " \
+                       "relation that affects parameter '%s'." % (modify, param)
             
             # Update parameter
             self.base[param] = value
@@ -213,9 +213,9 @@ class CosmoParamsBase(object):
         elif param in constr_2:
             # Check for invalid modify parameter
             if modify is not None:
-                assert(modify in constr_2, 
-                       "Parameter '%s' can't be used to satisfy a consistency "
-                       "relation that affects parameter '%s'." % (modify, param))
+                assert modify in constr_2, \
+                       "Parameter '%s' can't be used to satisfy a consistency " \
+                       "relation that affects parameter '%s'." % (modify, param)
             else:
                 if param == 'Omega_m':
                     modify = 'Omega_k'
@@ -318,8 +318,8 @@ class CosmoParamsBase(object):
         # Check that requested kind of hash is in list
         if types is not None:
             for t in types:
-                assert(t in self.hash_types.keys(), 
-                       "Unknown kind of hash '%s' requested." % kind)
+                assert t in self.hash_types.keys(), \
+                       "Unknown kind of hash '%s' requested." % kind
         
         # If types=None, get all available hashes
         if types is None: types = self.hash_types.keys()

@@ -1,3 +1,3 @@
 
 from CosmoParams import *
-from CosmoParams.validate import validate
+import validate
