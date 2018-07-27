@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# OBSOLETE
+
+
 class CosmoBase(object):
     
     
